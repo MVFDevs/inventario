@@ -1,4 +1,6 @@
-<?php include 'modulos/head.php'; ?>
+<?php include 'modulos/head.php';
+  include 'modelos/conexion.php';
+?>
 <body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">
     <?php include 'modulos/header.php'; ?>
@@ -54,13 +56,12 @@
                   <div class="form-group">
                     <label>Holding</label>
                     <select class="form-control select2" style="width: 100%;" required>
-                      <option>asdasd</option>
-                      <option>Prueba</option>
-                      <option>Pruebita</option>
-                      <option>Testeo</option>
-                      <option>Test</option>
-                      <option>Test</option>
-                      <option>Test</option>
+                      <?php
+                        $datos = mysqli_query($con,"SELECT * FROM holding");
+                        foreach ($datos as $item) {
+                       ?>
+                      <option value="<?php echo $item['id'] ?>"><?php echo $item['descripcion'] ?></option>
+                    <?php } ?>
                     </select>
                   </div>
                   <div class="form-group">
@@ -143,11 +144,12 @@
                       <div class="form-group">
                         <label>Cargo</label>
                         <select class="form-control" required>
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <?php
+                            $datos = mysqli_query($con,"SELECT * FROM cargo");
+                            foreach ($datos as $item) {
+                           ?>
+                          <option value="<?php echo $item['id'] ?>"><?php echo $item['descripcion'] ?></option>
+                        <?php } ?>
                         </select>
                       </div>
                     </div>
@@ -155,11 +157,12 @@
                       <div class="form-group">
                         <label>Tipo de funcionario</label>
                         <select class="form-control" required>
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <?php
+                            $datos = mysqli_query($con,"SELECT * FROM tipo_funcionario");
+                            foreach ($datos as $item) {
+                           ?>
+                          <option value="<?php echo $item['id'] ?>"><?php echo $item['descripcion'] ?></option>
+                        <?php } ?>
                         </select>
                       </div>
                     </div>
@@ -187,13 +190,12 @@
                     <div class="form-group">
                       <label>Obra</label>
                       <select class="form-control select2" style="width: 100%;" required>
-                        <option>asdsad</option>
-                        <option>Prueba</option>
-                        <option>Pruebita</option>
-                        <option>Testeo</option>
-                        <option>Test</option>
-                        <option>Test</option>
-                        <option>Test</option>
+                        <?php
+                          $datos = mysqli_query($con,"SELECT id,descripcion FROM holding WHERE estado=0");
+                          foreach ($datos as $item) {
+                         ?>
+                        <option value="<?php echo $item['id'] ?>"><?php echo $item['descripcion'] ?></option>
+                      <?php } ?>
                       </select>
                     </div>
                   </div>
@@ -250,11 +252,12 @@
                   <div class="form-group">
                     <label>Tipo de producto</label>
                     <select class="form-control" required>
-                      <option>option 1</option>
-                      <option>option 2</option>
-                      <option>option 3</option>
-                      <option>option 4</option>
-                      <option>option 5</option>
+                      <?php
+                        $datos = mysqli_query($con,"SELECT * FROM tipo_producto");
+                        foreach ($datos as $item) {
+                       ?>
+                      <option value="<?php echo $item['id'] ?>"><?php echo $item['descripcion'] ?></option>
+                    <?php } ?>
                     </select>
                   </div>
                 </div>

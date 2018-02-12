@@ -1,12 +1,4 @@
-<?
-class Conexion{
-
-	public function conectar(){
-
-		$link = new PDO("mysql:host=localhost;dbname=inventario","root","");
-		return $link;
-
-	}
-}
-
-?>
+<?php
+$con = new mysqli('localhost','root','','inventario' );
+$con->set_charset('utf8');
+ ?>
