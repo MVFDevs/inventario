@@ -1,0 +1,12 @@
+<?
+class Conexion{
+
+	public function conectar(){
+
+		$link = new PDO("mysql:host=localhost;dbname=inventario","root","");
+		return $link;
+
+	}
+
+
+?>
