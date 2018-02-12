@@ -1,0 +1,13 @@
+<script src="js/jquery.min.js"></script>
+<script src="js/funciones.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/select2.full.min.js"></script>
+<script src="js/adminlte.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/jquery.slimscroll.min.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/daterangepicker.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
+<script src="js/jquery.rut.min.js"></script>
