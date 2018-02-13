@@ -1,4 +1,4 @@
-<?php include 'modulos/head.php'; ?>
+<?php include 'modulos/head.php';?>
 <body class="hold-transition skin-red sidebar-mini" onload="cargar('modulos/datosInventario.php');">
 <div class="wrapper">
   <?php include 'modulos/header.php'; ?>

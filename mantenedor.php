@@ -109,19 +109,19 @@
               </div>
             </div>
             <div class="box-body">
-              <form role="form">
+              <form role="form" method="post" action="controladores/insFuncionario.php">
                 <div class="box-body">
                   <div class="col-md-12">
                     <div class="col-md-6 col-xs-8">
                       <div class="form-group">
                         <label for="rut">Rut</label>
-                        <input type="text" class="form-control" id="rut" placeholder="Ingrese rut del funcionario" required pattern="[0-9]{7,8}" title="Ingresa un rut valido" maxlength="8">
+                        <input type="text" class="form-control" id="rut" placeholder="Ingrese rut del funcionario" required pattern="[0-9]{7,8}" title="Ingresa un rut valido" maxlength="8" name="rut">
                       </div>
                     </div>
                     <div class="col-md-1 col-xs-4">
                       <div class="form-group">
                         <label for="digito" > </label>
-                        <input type="text" name="" required pattern="[0-9kK]{1}" title="Ingrese un valor correcto" id="digito" class="form-control">
+                        <input type="text" required pattern="[0-9kK]{1}" title="Ingrese un valor correcto" id="digito" class="form-control" name="digito">
                       </div>
                     </div>
                   </div>
@@ -129,13 +129,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required name="nombre">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="apellido">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" placeholder="Nombre" required>
+                        <input type="text" class="form-control" id="apellido" placeholder="Nombre" required name="apellido">
                       </div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Cargo</label>
-                        <select class="form-control" required>
+                        <select class="form-control" required name="cargo">
                           <?php
                             $datos = mysqli_query($con,"SELECT * FROM cargo");
                             foreach ($datos as $item) {
@@ -156,7 +156,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Tipo de funcionario</label>
-                        <select class="form-control" required>
+                        <select class="form-control" required name="tipoFuncionario">
                           <?php
                             $datos = mysqli_query($con,"SELECT * FROM tipo_funcionario");
                             foreach ($datos as $item) {
@@ -171,7 +171,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="email">Correo</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingrese el correo" required>
+                        <input type="email" class="form-control" id="email" placeholder="Ingrese el correo" required name="correo">
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -181,7 +181,7 @@
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" class="form-control pull-right" id="nombramiento" required>
+                          <input type="text" class="form-control pull-right" id="nombramiento" required name="nombramiento">
                         </div>
                       </div>
                     </div>
@@ -189,12 +189,12 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Obra</label>
-                      <select class="form-control select2" style="width: 100%;" required>
+                      <select class="form-control select2" style="width: 100%;" required name="obra">
                         <?php
-                          $datos = mysqli_query($con,"SELECT id,descripcion FROM holding WHERE estado=0");
+                          $datos = mysqli_query($con,"SELECT obra.id,obra.nombre,holding.descripcion FROM obra INNER JOIN holding on obra.holding = holding.id WHERE obra.estado = '0'");
                           foreach ($datos as $item) {
                          ?>
-                        <option value="<?php echo $item['id'] ?>"><?php echo $item['descripcion'] ?></option>
+                        <option value="<?php echo $item['id'] ?>"><?php echo $item['nombre'] ?> / <?php echo $item['descripcion'] ?></option>
                       <?php } ?>
                       </select>
                     </div>
@@ -218,11 +218,11 @@
               </div>
             </div>
             <div class="box-body">
-              <form role="form">
+              <form role="form" method="post" action="controladores/insProducto.php">
                 <div class="box-body">
                   <div class="form-group">
                     <label for="codigo">Código</label>
-                    <input type="text" class="form-control" id="codigo" placeholder="Ingrese código de producto" required>
+                    <input type="text" class="form-control" id="codigo" placeholder="Ingrese código de producto" required name="codigo">
                   </div>
                   <div class="form-group">
                     <label>Fecha de depreciación:</label>
@@ -230,28 +230,27 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="depreciacion" required>
+                      <input type="text" class="form-control pull-right" id="depreciacion" required name="depreciacion">
                     </div>
                   </div>
                   <div class="form-group">
                     <label>Observación</label>
-                    <textarea class="form-control" rows="3" placeholder="Introduzca información necesario"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Introduzca información necesario" name="observacion"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Funcionario</label>
-                    <select class="form-control select2" style="width: 100%;" required>
-                      <option>asdsad</option>
-                      <option>Prueba</option>
-                      <option>Pruebita</option>
-                      <option>Testeo</option>
-                      <option>Test</option>
-                      <option>Test</option>
-                      <option>Test</option>
+                    <select class="form-control select2" style="width: 100%;" required name="funcionario">
+                      <?php
+                        $datos = mysqli_query($con,"SELECT rut,nombre,apellido FROM funcionario");
+                        foreach ($datos as $item) {
+                       ?>
+                      <option value="<?php echo $item['rut'] ?>"><?php echo $item['nombre'] ?> <?php echo $item['apellido'] ?></option>
+                    <?php } ?>
                     </select>
                   </div>
                   <div class="form-group">
                     <label>Tipo de producto</label>
-                    <select class="form-control" required>
+                    <select class="form-control" required name="tipoProducto">
                       <?php
                         $datos = mysqli_query($con,"SELECT * FROM tipo_producto");
                         foreach ($datos as $item) {

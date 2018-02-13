@@ -1,20 +1,29 @@
 <?php
 include '../modelos/conexion.php';
-$id='';
-$id_holding = htmlentities($_POST['holding']);
-$obra = htmlentities($_POST['nombreObra']);
-$fecha_inicio = htmlentities($_POST['fechaInicio']);
-$fecha_termino = htmlentities($_POST['fechaTermino']);
+$rut = htmlentities($_POST['rut']);
+$digito=0;
+$digito = htmlentities($_POST['digito']);
+$rutCompleto = $rut.$digito;
+$nombre = htmlentities($_POST['nombre']);
+$apellido = htmlentities($_POST['apellido']);
+$cargo = htmlentities($_POST['cargo']);
+$tipoFuncionario = htmlentities($_POST['tipoFuncionario']);
+$correo = htmlentities($_POST['correo']);
 $estado = 0;
-$fecha_inicio = strtotime($fecha_inicio);
-$fecha_termino = strtotime($fecha_termino);
-$fechaInicio = date('Y-m-d',$fecha_inicio);
-$fechaTermino = date('Y-m-d',$fecha_termino);
-$comprobacion = "SELECT nombre FROM obra WHERE nombre='$obra'";
-$c = mysqli_query($con,$comprobacion);
-if (!$c) {
-  $sql= "INSERT INTO obra (id, holding, nombre, fecha_inicio, fecha_termino, estado) VALUES ('$id','$id_holding','$obra','$fechaInicio','$fechaTermino','$estado')";
-  echo "Si";
+$nombramiento = htmlentities($_POST['nombramiento']);
+$nombramiento = strtotime($nombramiento);
+$fNombramiento = date('Y-m-d',$nombramiento);
+$obra = htmlentities($_POST['obra']);
+$sel=$con->query("SELECT rut FROM funcionario WHERE rut='$rutCompleto'");
+$row = mysqli_num_rows($sel);
+if ($row == 0) {
+  $sql = "INSERT INTO funcionario(rut,nombre,apellido,cargo,tipo,correo,estado,fecha_nombramiento,id_obra) VALUES ('$rutCompleto','$nombre','$apellido','$cargo','$tipoFuncionario','$correo','$estado','$fNombramiento','$obra')";
+  $ins = mysqli_query($con,$sql);
+  if ($ins) {
+    echo "si";
+  }else {
+    echo "no";
+  }
 }else {
   echo "no";
 }
