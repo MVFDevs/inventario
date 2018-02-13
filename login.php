@@ -25,19 +25,24 @@
 
     <p class="login-box-msg">Inicia tu Sesión</p>
 
-    <form action="" method="post">
+    <form id="formIngreso" action="" method="post" onsubmit="return validaIngreso()">
       <div class="form-group has-feedback">
-        <input type="user" class="form-control" placeholder="Usuario" required >
+        <input type="user" class="form-control" id="usuarioIngreso" placeholder="Usuario" required >
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="password" class="form-control" id="passwordIngreso" placeholder="Password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
         </div>
         <!-- /.col -->
+        <?php
+              require 'controladores/Login.php';
+              $ingreso= new Login();
+			        $ingreso->validaLogin();
+        ?>
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
         </div>
@@ -53,20 +58,7 @@
 </body>
 </html>
 <!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
+
 
 </body>
 </html>

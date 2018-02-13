@@ -12,3 +12,4 @@
 <script src="js/bootstrap-datepicker.min.js"></script>
 <script src="js/jquery.rut.min.js"></script>
 <script src="sweetalert2.all.min.js"></script>
+<script src="js/validaIngreso.js"></script>
