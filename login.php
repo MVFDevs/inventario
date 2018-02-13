@@ -17,21 +17,18 @@
 <div class="login-box">
   <div class="login-logo">
   </div>
-  <!-- /.login-logo -->
   <div class="login-box-body">
     <div class="login-logo">
     <a href="">Sistema Inventario DIO</a>
     </div>
-
     <p class="login-box-msg">Inicia tu Sesión</p>
-
-    <form action="" method="post">
+    <form action="controladores/Login.php" method="post">
       <div class="form-group has-feedback">
-        <input type="user" class="form-control" placeholder="Usuario" required >
+        <input type="text" name="user" class="form-control" placeholder="Usuario" required >
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -47,26 +44,8 @@
   </div>
   <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
-
 <?php include 'modulos/scripts.php'; ?>
 </body>
 </html>
-<!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
-
 </body>
 </html>
