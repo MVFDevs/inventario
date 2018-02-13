@@ -3,8 +3,9 @@ include '../modelos/conexion.php';
 if ($_SERVER['REQUEST_METHOD']=='POST') {
   $id = '';
   $descripcion = htmlentities($_POST['descripcion']);
-  $comprobacion = "SELECT descripcion FROM holding WHERE descripcion='$descripcion'";
-  if (!$comprobacion) {
+  $sel= $con->query("SELECT descripcion FROM holding WHERE descripcion='$descripcion'");
+  $row = mysqli_num_rows($sel);
+  if ($row == 0) {
     $sql= "INSERT INTO holding (id, descripcion) VALUES ('$id','$descripcion')";
     $ins = mysqli_query($con,$sql);
     if ($ins) {

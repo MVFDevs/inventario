@@ -26,7 +26,7 @@
               </div>
             </div>
             <div class="box-body">
-              <form role="form" method="post" action="controladores/Holding.php">
+              <form role="form" method="post" action="controladores/insHolding.php">
                 <div class="box-body">
                   <div class="form-group">
                     <label for="Nombre">Nombre de Holding</label>
@@ -51,11 +51,11 @@
               </div>
             </div>
             <div class="box-body">
-              <form role="form">
+              <form role="form" method="post" action="controladores/insObra.php">
                 <div class="box-body">
                   <div class="form-group">
                     <label>Holding</label>
-                    <select class="form-control select2" style="width: 100%;" required>
+                    <select class="form-control select2" style="width: 100%;" required name="holding">
                       <?php
                         $datos = mysqli_query($con,"SELECT * FROM holding");
                         foreach ($datos as $item) {
@@ -66,7 +66,7 @@
                   </div>
                   <div class="form-group">
                     <label for="nombre">Nombre de Obra</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre de obra" required>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre de obra" required name="nombreObra">
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
@@ -75,7 +75,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="inicio" required>
+                        <input type="text" class="form-control pull-right" id="inicio" required name="fechaInicio">
                       </div>
                     </div>
                   </div>
@@ -86,7 +86,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="termino" required>
+                        <input type="text" class="form-control pull-right" id="termino" required name="fechaTermino">
                       </div>
                     </div>
                   </div>
@@ -274,19 +274,39 @@
   </div>
   <?php include 'modulos/scripts.php'; ?>
   <script type="text/javascript">
+  $.fn.datepicker.dates['es'] = {
+  days: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+  daysShort: [ "Dom", "Lun", "Mar", "Mier", "Jue", "Vier", "Sab" ],
+  daysMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+  months: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+  monthsShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec" ],
+  today: "Hoy",
+  clear: "Limpiar",
+  format: "dd-mm-yyyy",
+  titleFormat: "MM yyyy",
+  weekStart: 1
+};
   $(function () {
     $('.select2').select2()
     $('#inicio').datepicker({
-      autoclose: true
+      language: 'es',
+      autoclose: true,
+      startDate: "+0d"
     })
     $('#termino').datepicker({
-      autoclose: true
+      autoclose: true,
+      language: 'es',
+      startDate: "+0d"
     })
     $('#nombramiento').datepicker({
-      autoclose: true
+      autoclose: true,
+      language: 'es',
+      startDate: "+0d"
     })
     $('#depreciacion').datepicker({
-      autoclose: true
+      autoclose: true,
+      language: 'es',
+      startDate: "+0d"
     })
   })
 </script>
