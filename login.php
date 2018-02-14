@@ -34,15 +34,12 @@
       <div class="row">
         <div class="col-xs-8">
         </div>
-        <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
         </div>
-        <!-- /.col -->
       </div>
     </form>
   </div>
-  <!-- /.login-box-body -->
 </div>
 <?php include 'modulos/scripts.php'; ?>
 </body>
