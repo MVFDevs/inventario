@@ -1,5 +1,17 @@
+<?php
+//$now = time();
+//if ($now > $_SESSION["expired"]) {
+//  header('location:extend/alerta.php?msj=Sesion caducada, vuelva a iniciar sesion&c=salir&p=lg&t=error');
+//}
+session_start();
+if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
+  
+}else {
+  header('location:extend/alerta.php?msj=Debe iniciar sesion con su cuenta&c=salir&p=lg&t=error');
+}
+ ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

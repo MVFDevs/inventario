@@ -121,7 +121,7 @@
                     <div class="col-md-1 col-xs-4">
                       <div class="form-group">
                         <label for="digito" > </label>
-                        <input type="text" required pattern="[0-9kK]{1}" title="Ingrese un valor correcto" id="digito" class="form-control" name="digito">
+                        <input type="text" required pattern="[0-9kK]{1}" title="Ingrese un valor correcto" id="digito" class="form-control" name="digito" maxlength="1">
                       </div>
                     </div>
                   </div>
@@ -135,7 +135,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="apellido">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" placeholder="Nombre" required name="apellido">
+                        <input type="text" class="form-control" id="apellido" placeholder="Apellido" required name="apellido">
                       </div>
                     </div>
                   </div>
@@ -238,15 +238,7 @@
                     <textarea class="form-control" rows="3" placeholder="Introduzca información necesario" name="observacion"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>Funcionario</label>
-                    <select class="form-control select2" style="width: 100%;" required name="funcionario">
-                      <?php
-                        $datos = mysqli_query($con,"SELECT rut,nombre,apellido FROM funcionario");
-                        foreach ($datos as $item) {
-                       ?>
-                      <option value="<?php echo $item['rut'] ?>"><?php echo $item['nombre'] ?> <?php echo $item['apellido'] ?></option>
-                    <?php } ?>
-                    </select>
+                    <input type="text" class="form-control pull-right" name="funcionario" value="000000000" style="visibility:hidden">
                   </div>
                   <div class="form-group">
                     <label>Tipo de producto</label>

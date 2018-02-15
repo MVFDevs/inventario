@@ -1,5 +1,6 @@
 <?php
 include '../modelos/conexion.php';
+session_start();
  ?>
   <div class="box box-danger" >
         <div class="box-header">
@@ -22,7 +23,8 @@ include '../modelos/conexion.php';
             </thead>
             <tbody>
             <?php
-              $sql = "SELECT producto.codigo,tipo_producto.descripcion,producto.observacion,producto.rut_funcionario,funcionario.nombre,funcionario.apellido,cargo.descripcion,tipo_funcionario.descripcion,obra.nombre,holding.descripcion FROM producto INNER JOIN tipo_producto on (tipo_producto.id = producto.tipo) INNER JOIN funcionario ON (funcionario.rut = producto.rut_funcionario) INNER JOIN cargo on (cargo.id = funcionario.cargo) INNER JOIN tipo_funcionario on (tipo_funcionario.id = funcionario.tipo) INNER JOIN obra ON (obra.id = funcionario.id_obra) INNER JOIN holding ON (holding.id = obra.holding) WHERE producto.estado = '1'";
+            $tipo = $_SESSION["tipo"];
+              $sql = "SELECT producto.codigo,tipo_producto.descripcion,producto.observacion,producto.rut_funcionario,funcionario.nombre,funcionario.apellido,cargo.descripcion,tipo_funcionario.descripcion,obra.nombre,holding.descripcion FROM producto INNER JOIN tipo_producto on (tipo_producto.id = producto.tipo) INNER JOIN funcionario ON (funcionario.rut = producto.rut_funcionario) INNER JOIN cargo on (cargo.id = funcionario.cargo) INNER JOIN tipo_funcionario on (tipo_funcionario.id = funcionario.tipo) INNER JOIN obra ON (obra.id = funcionario.id_obra) INNER JOIN holding ON (holding.id = obra.holding) WHERE producto.estado = '1' AND funcionario.tipo='$tipo'";
               $datos = mysqli_query($con,$sql);
               $row = mysqli_num_rows($datos);
               $array = $datos->fetch_all();
