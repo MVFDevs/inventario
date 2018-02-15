@@ -11,7 +11,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Menú</li>
       <li class=""><a href="#" onclick="cargar('modulos/datosInventario.php');"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-      <?php if ($_SESSION["tipo"] == 1){ ?>
+      <?php if ($_SESSION["tipo"] == 4){ ?>
         <li class="treeview">
           <a href="#"><i class="fa fa-cubes"></i> <span>Inventario</span>
             <span class="pull-right-container">

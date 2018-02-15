@@ -1,5 +1,9 @@
 <?php include 'modulos/head.php';
   include 'modelos/conexion.php';
+  if ($_SESSION["tipo"]==4) {
+  }else {
+    header('location:extend/alerta.php?msj=No posees privilegios para ingresar a esta pagina&c=salir&p=in&t=error');
+  }
 ?>
 <body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">

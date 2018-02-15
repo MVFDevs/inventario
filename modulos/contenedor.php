@@ -1,9 +1,9 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      inicio
+      Inicio
       <small>Bienvenido!</small>
-    </h1>    
+    </h1>
   </section>
   <section class="content container-fluid">
     <div id="paginas"></div>

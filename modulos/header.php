@@ -11,6 +11,7 @@
     </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
+        <?php if ($_SESSION["tipo"]==4) {?>
         <li class="dropdown notifications-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
@@ -37,6 +38,7 @@
             </li>
           </ul>
         </li>
+      <?php } ?>
         <li class="dropdown tasks-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-flag-o"></i>

@@ -7,10 +7,10 @@ if(isset($_POST["user"]))
   {
     $user=$_POST["user"];
     $pass=decrypt($_POST["password"]);
-    $sel=$con->query("SELECT id,tipo,nombre,pass,rut FROM usuario WHERE nombre='$user' AND pass='$pass'");
+    $sel=$con->query("SELECT id,tipo,nombre,pass,rut FROM usuario WHERE nombre='$user' AND pass='$pass' AND estado='0'");
     $row = mysqli_num_rows($sel);
     if ($row == 0) {
-      header('location:../extend/alerta.php?msj=No se encuentra el usuario&c=salir&p=lg&t=error');
+      header('location:../extend/alerta.php?msj=No se encuentra el usuario o usuario bloqueado&c=salir&p=lg&t=error');
     }
     else{
       session_start();
