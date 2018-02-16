@@ -1,10 +1,6 @@
 <?php include 'modulos/head.php';
   include 'modelos/conexion.php';
   $tipo =$_SESSION["tipo"];
-  if ($tipo==4) {
-  }else {
-    header('location:extend/alerta.php?msj=No posees privilegios para ingresar a esta pagina&c=salir&p=in&t=error');
-  }
 ?>
 <body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">
@@ -15,16 +11,16 @@
         <h1>
           Inventario
           <small>Sección Inventario</small>
-        </h1>
+        </h1>        
       </section>
       <section class="content container-fluid">
         <div id="paginas">
           <div class="box box-danger" >
                <div class="box-header">
-                 <h3 class="box-title">Inventario</h3>
+                 <h3 class="box-title">Personal Vigente</h3>
                </div>
                <div class="box-body">
-                 <table id="datos" class="table table-bordered table-striped">
+                 <table id="datos" class="table table-bordered table-striped display ">
                    <thead>
                    <tr>
                      <th>Holding</th>
@@ -34,7 +30,7 @@
                      <th>Rut Funcionario</th>
                      <th>Cargo Funcionario</th>
                      <th>Seccion</th>
-                     <th>Termino de Nombramiento</th>
+                     <th>Fin Nombramiento</th>
                      <?php
                      if ($tipo == 4){?>
                        <th>Editar</th>
@@ -45,7 +41,7 @@
                     if ($tipo == 4) {
                        $sql = "SELECT hold.descripcion , obr.nombre,date_format(obr.fecha_termino, '%d/%m/%Y') , fun.nombre, fun.apellido, fun.rut, car.descripcion , tipofun.descripcion,date_format(fun.fecha_nombramiento, '%d/%m/%Y') FROM holding hold, obra obr, funcionario fun, cargo car, tipo_funcionario tipofun WHERE fun.estado= '0' and obr.estado='0' AND fun.id_obra= obr.id AND obr.holding = hold.id and car.id = fun.cargo and tipofun.id= fun.tipo order by fun.apellido ASC" ;
                      }else {
-                        $sql = "SELECT hold.descripcion , obr.nombre, obr.fecha_termino, fun.nombre, fun.apellido, fun.rut, car.descripcion , tipofun.descripcion,fun.fecha_nombramiento FROM holding hold, obra obr, funcionario fun, cargo car, tipo_funcionario tipofun WHERE fun.estado= '0' and obr.estado='0' AND fun.id_obra= obr.id AND obr.holding = hold.id and car.id = fun.cargo and tipofun.id= fun.tipo order by fun.apellido ASC AND funcionario.tipo='$tipo' ";
+                        $sql = "SELECT hold.descripcion , obr.nombre,date_format(obr.fecha_termino, '%d/%m/%Y') , fun.nombre, fun.apellido, fun.rut, car.descripcion , tipofun.descripcion,date_format(fun.fecha_nombramiento, '%d/%m/%Y') FROM holding hold, obra obr, funcionario fun, cargo car, tipo_funcionario tipofun WHERE fun.estado= '0' and obr.estado='0' AND fun.id_obra= obr.id AND obr.holding = hold.id and car.id = fun.cargo and tipofun.id= fun.tipo AND tipo='$tipo' order by fun.apellido ASC " ;
                        }
                      $datos = mysqli_query($con,$sql);
                      $row = mysqli_num_rows($datos);
@@ -63,8 +59,7 @@
                           <td><?php echo $array[$i][8] ?></td>
                           <?php
                            if ($tipo == 4){?>
-                             <td><a class"btn btn-app" href=""><i class="fa fa-edit"></i>
-                             </a>
+                             <td><button class"" href=""><i class="fa fa-edit"></i></button>
                              </td>
                              <?php   }?>
                                </tr>
@@ -81,7 +76,7 @@
                      <th>Rut Funcionario</th>
                      <th>Cargo Funcionario</th>
                      <th>Seccion</th>
-                     <th>Termino de Nombramiento</th>
+                     <th>Fin Nombramiento</th>
                      <?php
                      if ($tipo == 4){?>
                        <th>Editar</th>
@@ -99,7 +94,7 @@
   </div>
   <?php include 'modulos/scripts.php'; ?>
   <script>
-    $(function () {
+    $(document).ready(function () {
       $('#datos').DataTable({
         'paging'      : true,
         'lengthChange': true,
@@ -109,9 +104,35 @@
         'autoWidth'   : true,
         "language": {
             "url": "js/espanol.json"
-        }
-      })
+        },
+        dom: 'Bfrtip',
+        buttons: [
+          {
+               extend: 'excelHtml5',
+               title: 'Personal Vigente',
+               exportOptions: {
+                  columns: ':visible'
+              }
+           },
+           {
+               extend: 'pdfHtml5',
+               title: 'Personal Vigente',
+               orientation: 'landscape',
+               exportOptions: {
+                    columns: ':visible'
+                }
+           },
+           {
+             extend: 'colvis',
+             text: 'Visibilidad de columnas'
+           }
+
+        ]
+      });
     })
+
+
   </script>
+
   </body>
   </html>

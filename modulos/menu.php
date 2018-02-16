@@ -24,6 +24,7 @@
           </ul>
         </li>
       <?php } ?>
+      <li class=""><a href="personalvigente.php" ><i class="fa fa-home"></i> <span>Personal Vigente</span></a></li>
     </ul>
   </section>
 </aside>
