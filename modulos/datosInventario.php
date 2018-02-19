@@ -78,7 +78,30 @@ session_start();
             'autoWidth'   : true,
             "language": {
                 "url": "js/espanol.json"
-            }
+            },
+            dom: 'Bfrtip',
+            buttons: [
+              {
+                   extend: 'excelHtml5',
+                   title: 'Personal Vigente',
+                   exportOptions: {
+                      columns: ':visible'
+                  }
+               },
+               {
+                   extend: 'pdfHtml5',
+                   title: 'Personal Vigente',
+                   orientation: 'landscape',
+                   exportOptions: {
+                        columns: ':visible'
+                    }
+               },
+               {
+                 extend: 'colvis',
+                 text: 'Visibilidad de columnas'
+               }
+
+            ]
           })
         })
       </script>
