@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     }else {
     header('location:../extend/alerta.php?msj=Funcionario no pudo ser registrado&c=salir&p=man&t=error');
     }
+  }else {
+    header('location:../extend/alerta.php?msj=Funcionario ya se encuentra creado&c=salir&p=man&t=error');
   }
 }else {
   header('location:../extend/alerta.php?msj=Utiliza el formulario&c=salir&p=man&t=error');

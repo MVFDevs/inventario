@@ -52,10 +52,68 @@
                     </div>
                   </form>
                 </div>
-                <!-- ========================================== -->
-                <!-- Formulario Obra -->
-                <!-- ========================================== -->
               </div>
+              <!-- ========================================== -->
+              <!-- Formulario Mandante -->
+              <!-- ========================================== -->
+              <div class="box box-danger collapsed-box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Mandante</h3>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <form role="form" method="post" action="controladores/insMandante.php">
+                    <div class="box-body">
+                      <div class="col-md-12">
+                        <div class="col-md-6 col-xs-8">
+                          <div class="form-group">
+                            <label for="rut">Rut</label>
+                            <input type="text" class="form-control" id="rut" placeholder="Ingrese rut del funcionario" required pattern="[0-9]{8,9}" title="Ingresa un rut valido" maxlength="9" name="rut">
+                          </div>
+                        </div>
+                        <div class="col-md-1 col-xs-4">
+                          <div class="form-group">
+                            <label for="digito" > </label>
+                            <input type="text" required pattern="[0-9kK]{1}" title="Ingrese un valor correcto" id="digito" class="form-control" name="digito" maxlength="1">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="razon">Razón Social</label>
+                            <input type="text" class="form-control" id="razon" placeholder="Ingrese la razón social" required name="razon" value="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Holding</label>
+                            <select class="form-control select2" style="width: 100%;" required name="holding">
+                              <?php
+                                $datos = mysqli_query($con,"SELECT * FROM holding");
+                                foreach ($datos as $item) {
+                               ?>
+                              <option value="<?php echo $item['id'] ?>"><?php echo $item['descripcion'] ?></option>
+                            <?php } ?>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box-footer">
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- ========================================== -->
+              <!-- Formulario Obra -->
+              <!-- ========================================== -->
               <div class="box box-danger collapsed-box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Obra</h3>
