@@ -17,7 +17,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Inventario</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/ionicons.min.css">
