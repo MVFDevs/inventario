@@ -26,4 +26,5 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   <link rel="stylesheet" href="css/select2.min.css">
   <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="css/AdminLTE.min.css">
+  <link rel="stylesheet" href="sweetalert2.min.css">
 </head>

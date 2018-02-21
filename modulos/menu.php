@@ -19,8 +19,18 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#" onclick="cargar('modulos/asignacionProducto.php');"><i class="fa fa-dollar"></i>Asignación de activos</a></li>
             <li><a href="mantenedor.php"><i class="fa fa-database"></i>Mantenedor</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-dollar"></i> <span>Activos</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#" onclick="cargar('modulos/asignacionProducto.php');"><i class="fa fa-dollar"></i>Asignación de activos</a></li>
+            <li><a href="modificacionActivos.php" ><i class="fa fa-edit"></i>Modificación de activos</a></li>
           </ul>
         </li>
       <?php } ?>

@@ -8,7 +8,7 @@
 <body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">
     <?php include 'modulos/header.php'; ?>
-    <?php include 'modulos/menu.php'; ?>
+    <?php include 'modulos/menu.php'; ?>>
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
@@ -328,104 +328,13 @@
               </div>
             </div>
           </div>
-          <!-- ===================================================================================================== -->
-          <!-- ============================== Modificaciones de datos ============================================== -->
-          <!-- ===================================================================================================== -->
-          <div class="box box-danger collapsed-box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Modificación de datos</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="box-body">
-              <!-- ========================================== -->
-              <!-- Formulario Modificación Obra -->
-              <!-- ========================================== -->
-              <div class="box box-danger collapsed-box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Obra</h3>
-                  <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="box-body">
-                  <form role="form" action="controladores/actualizarDatos.php" method="post">
-                    <select class="form-control select2" style="width: 100%;" required name="codigo" id="ObraMod">
-                      <option value="">Seleccione Obra</option>
-                    </select>
-                    <div class="form-group">
-                      <input type="text" class="form-control pull-right" name="tipo_mod" value="obra" style="visibility:hidden">
-                    </div>
-                    <div id="formularioObra">
-                    </div>
-                  </form>
-              </div>
-            </div>
-            <!-- ========================================== -->
-            <!-- Formulario Modificación Funcionario -->
-            <!-- ========================================== -->
-            <div class="box box-danger collapsed-box box-solid">
-              <div class="box-header with-border">
-                <h3 class="box-title">Funcionario</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body">
-                <form role="form" action="controladores/actualizarDatos.php" method="post">
-                  <div class="form-group">
-                    <label>Funcionario</label>
-                    <select class="form-control select2" style="width: 100%;" required id="funcionario" name="funcionario">
-                      <option value="">Seleccione Funcionario</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control pull-right" name="tipo_mod" value="funcionario" style="visibility:hidden">
-                  </div>
-                  <div id="formularioFuncionario">
-                  </div>
-                </form>
-            </div>
-          </div>
-          <!-- ========================================== -->
-          <!-- Formulario Modificación Producto -->
-          <!-- ========================================== -->
-          <div class="box box-danger collapsed-box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Producto</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="box-body">
-              <form role="form" action="controladores/actualizarDatos.php" method="post">
-                <div class="form-group">
-                  <label>Producto</label>
-                  <select class="form-control select2" style="width: 100%;" required id="producto" name="producto">
-                    <option value="">Seleccione Producto</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control pull-right" name="tipo_mod" value="producto" style="visibility:hidden">
-                </div>
-                <div id="formularioProducto">
-                </div>
-              </form>
-          </div>
-        </div>
-          </div><!-- FIN DIV BODY COLLAPSE -->
-        </div><!-- FIN SECCIÓN DE MODIFICACIÓN DE DATOS -->
+
         </div>
         </section>
     </div>
-    <?php include_once 'modulos/footer.php'; ?>
+    <?php include 'modulos/footer.php'; ?>
   </div>
-  <?php include_once 'modulos/scripts.php'; ?>
+  <?php include 'modulos/scripts.php'; ?>
 <script type="text/javascript">
   $.fn.datepicker.dates['es'] = {
   days: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
@@ -462,24 +371,6 @@
       startDate: "+0d"
     })
   })
-</script>
-<script>
-  $(function () {
-    $('#datos').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true,
-      "language": {
-          "url": "js/espanol.json"
-      }
-    })
-  })
-</script>
-<script type="text/javascript">
-
 </script>
 </body>
 </html>

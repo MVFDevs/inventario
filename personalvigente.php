@@ -5,13 +5,13 @@
 <body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">
     <?php include 'modulos/header.php'; ?>
-    <?php include 'modulos/menu.php'; ?>>
+    <?php include 'modulos/menu.php'; ?>
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
           Inventario
           <small>Sección Inventario</small>
-        </h1>        
+        </h1>
       </section>
       <section class="content container-fluid">
         <div id="paginas">
@@ -31,10 +31,6 @@
                      <th>Cargo Funcionario</th>
                      <th>Seccion</th>
                      <th>Fin Nombramiento</th>
-                     <?php
-                     if ($tipo == 4){?>
-                       <th>Editar</th>
-                       <?php   }?>
                    </thead>
                    <tbody>
                    <?php
@@ -57,12 +53,7 @@
                           <td><?php echo $array[$i][6] ?></td>
                           <td><?php echo $array[$i][7] ?></td>
                           <td><?php echo $array[$i][8] ?></td>
-                          <?php
-                           if ($tipo == 4){?>
-                             <td><button class"" href=""><i class="fa fa-edit"></i></button>
-                             </td>
-                             <?php   }?>
-                               </tr>
+                        </tr>
                        <?php
                      }
                     ?>
@@ -77,22 +68,19 @@
                      <th>Cargo Funcionario</th>
                      <th>Seccion</th>
                      <th>Fin Nombramiento</th>
-                     <?php
-                     if ($tipo == 4){?>
-                       <th>Editar</th>
-                       <?php   }?>
                    </tr>
                    </tfoot>
                  </table>
                </div>
                <!-- /.box-body -->
              </div>
+             <?php include 'modulos/scripts.php'; ?>
         </div>
         </section>
     </div>
     <?php include 'modulos/footer.php'; ?>
   </div>
-  <?php include 'modulos/scripts.php'; ?>
+
   <script>
     $(document).ready(function () {
       $('#datos').DataTable({
