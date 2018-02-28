@@ -379,7 +379,7 @@
                 <form role="form" action="controladores/actualizarDatos.php" method="post">
                   <div class="form-group">
                     <label>Funcionario</label>
-                    <select class="form-control select2" style="width: 100%;" required id="funcionario" name="funcionario">
+                    <select class="form-control select2" style="width: 100%;" required id="funcionarioMod" name="funcionario">
                       <option value="">Seleccione Funcionario</option>
                     </select>
                   </div>
@@ -477,9 +477,6 @@
       }
     })
   })
-</script>
-<script type="text/javascript">
-
 </script>
 </body>
 </html>

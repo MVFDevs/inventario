@@ -35,9 +35,9 @@
                    <tbody>
                    <?php
                     if ($tipo == 4) {
-                       $sql = "SELECT hold.descripcion , obr.nombre,date_format(obr.fecha_termino, '%d/%m/%Y') , fun.nombre, fun.apellido, fun.rut, car.descripcion , tipofun.descripcion,date_format(fun.fecha_nombramiento, '%d/%m/%Y') FROM holding hold, obra obr, funcionario fun, cargo car, tipo_funcionario tipofun WHERE fun.estado= '0' and obr.estado='0' AND fun.id_obra= obr.id AND obr.holding = hold.id and car.id = fun.cargo and tipofun.id= fun.tipo order by fun.apellido ASC" ;
+                       $sql = "SELECT hold.descripcion , obr.nombre,date_format(obr.fecha_termino, '%d-%m-%Y') , fun.nombre, fun.apellido, fun.rut, car.descripcion , tipofun.descripcion,date_format(fun.fecha_nombramiento, '%d-%m-%Y') FROM holding hold, obra obr, funcionario fun, cargo car, tipo_funcionario tipofun, mandante man WHERE fun.estado= '0' and obr.estado='0' AND fun.id_obra= obr.id AND obr.holding = man.id and man.holding = hold.id and car.id = fun.cargo and tipofun.id= fun.tipo order by fun.apellido ASC" ;
                      }else {
-                        $sql = "SELECT hold.descripcion , obr.nombre,date_format(obr.fecha_termino, '%d/%m/%Y') , fun.nombre, fun.apellido, fun.rut, car.descripcion , tipofun.descripcion,date_format(fun.fecha_nombramiento, '%d/%m/%Y') FROM holding hold, obra obr, funcionario fun, cargo car, tipo_funcionario tipofun WHERE fun.estado= '0' and obr.estado='0' AND fun.id_obra= obr.id AND obr.holding = hold.id and car.id = fun.cargo and tipofun.id= fun.tipo AND tipo='$tipo' order by fun.apellido ASC " ;
+                        $sql = "SELECT hold.descripcion , obr.nombre,date_format(obr.fecha_termino, '%d-%m-%Y') , fun.nombre, fun.apellido, fun.rut, car.descripcion , tipofun.descripcion,date_format(fun.fecha_nombramiento, '%d-%m-%Y') FROM holding hold, obra obr, funcionario fun, cargo car, tipo_funcionario tipofun, mandante man WHERE fun.estado= '0' and obr.estado='0' AND fun.id_obra= obr.id AND obr.holding = man.id and man.holding = hold.id and car.id = fun.cargo and tipofun.id= fun.tipo AND tipo='$tipo' order by fun.apellido ASC " ;
                        }
                      $datos = mysqli_query($con,$sql);
                      $row = mysqli_num_rows($datos);
@@ -87,7 +87,7 @@
         'paging'      : true,
         'lengthChange': true,
         'searching'   : true,
-        'ordering'    : false,
+        'ordering'    : true,
         'info'        : true,
         'autoWidth'   : true,
         "language": {

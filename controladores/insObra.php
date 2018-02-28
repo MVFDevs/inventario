@@ -2,7 +2,7 @@
 include '../modelos/conexion.php';
 if ($_SERVER['REQUEST_METHOD']=='POST') {
   $id='';
-  $id_holding = htmlentities($_POST['holding']);
+  $id_holding = htmlentities($_POST['mandante']);
   $obra = htmlentities($_POST['nombreObra']);
   $fecha_inicio = htmlentities($_POST['fechaInicio']);
   $fecha_termino = htmlentities($_POST['fechaTermino']);

@@ -15,7 +15,7 @@ $new_termino = $fecha_termino->format('d-m-Y');
   <div class="box-body">
     <div class="form-group">
       <label>Mandante</label>
-      <select class="form-control select2" style="width: 100%;" required name="mandante" id="asd">';
+      <select class="form-control select2" style="width: 100%;" required name="mandante" id="mandante">';
       echo '
         <option value="'.$mandante["id"].'">'.$mandante["razon_social"].'</option>';
         $datos_man = $conexion->query("SELECT id,razon_social FROM mandante");
@@ -73,6 +73,7 @@ $new_termino = $fecha_termino->format('d-m-Y');
   ';
  ?>
  <script type="text/javascript">
+  $('.select2').select2()
  $('#inicioMod').datepicker({
    language: 'es',
    autoclose: true

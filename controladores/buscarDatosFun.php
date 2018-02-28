@@ -143,7 +143,6 @@ echo '
  $('.select2').select2()
  $('#nombramientoMod').datepicker({
    autoclose: true,
-   language: 'es',
-   startDate: "+0d"
+   language: 'es'
  })
  </script>

@@ -8,7 +8,7 @@ $fecha_depre = new DateTime($d_prod["fecha_dep"]);
 $newDepre = $fecha_depre->format('d-m-Y');
 $obs = $d_prod["observacion"];
 $tipo = $d_prod["tipo"];
-$tipos_prod = $conexion->query("SELECT descripcion FROM tipo_producto WHERE id='$tipo'");
+$tipos_prod = $conexion->query("SELECT * FROM tipo_producto WHERE id='$tipo'");
 if ($tipos = $tipos_prod->fetch_assoc()) {}
 
 echo '
@@ -27,14 +27,11 @@ echo '
 </div>
 <div class="form-group">
   <label>Observación</label>
-  <textarea class="form-control" rows="3" placeholder="Introduzca información necesario" name="observacion">'.$obs.'</textarea>
-</div>
-<div class="form-group">
-  <input type="text" class="form-control pull-right" name="funcionario" value="000000000" style="visibility:hidden">
+  <textarea class="form-control" rows="3" placeholder="Introduzca información necesaria" name="observacion">'.$obs.'</textarea>
 </div>
 <div class="form-group">
   <label>Tipo de producto</label>
-  <select class="form-control" required name="tipoProducto">';
+  <select class="form-control" name="tipoProducto">';
   echo '<option value="'.$tipos["id"].'">'.$tipos["descripcion"].'</option>';
   $sel_tipo = $conexion->query("SELECT * FROM tipo_producto");
   while($datos_tipo = $sel_tipo->fetch_assoc()){

@@ -28,7 +28,6 @@ $(function(){
 	$.post( 'controladores/buscarFuncionario.php' ).done( function(respuesta)
 	{
 		$( '#funcionario' ).html( respuesta );
-    $( '#funcionarioMod' ).html( respuesta );
 	});
 	$('#funcionario').change(function()
 	{
@@ -61,9 +60,9 @@ $(
   function() {
     $.post( 'controladores/buscarFuncionarioMod.php' ).done( function(respuesta)
   	{
-      $( '#funcionario' ).html( respuesta );
+      $( '#funcionarioMod' ).html( respuesta );
   	});
-    $('#funcionario').on('change',
+    $('#funcionarioMod').on('change',
       function () {
         var rut = $(this).val();
         $.post( 'controladores/buscarDatosFun.php', { rut: rut} ).done( function( respuesta )

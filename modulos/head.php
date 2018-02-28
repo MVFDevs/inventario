@@ -17,8 +17,9 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Inventario</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="css/buttons.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/ionicons.min.css">
   <link rel="stylesheet" href="css/skins/skin-red.css">
@@ -26,5 +27,6 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   <link rel="stylesheet" href="css/select2.min.css">
   <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="css/AdminLTE.min.css">
-  <link rel="stylesheet" href="sweetalert2.min.css">
+  <link rel="stylesheet" href="css/sweetalert2.min.css">
+
 </head>
