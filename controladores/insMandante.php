@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
   $digito = htmlentities($_POST['digito']);
   $rutCompleto = $rut.$digito;
   $razon = htmlentities($_POST["razon"]);
-  $id_holding = htmlentities($_POST['holding']);
+  $id_holding = htmlentities($_POST['holdingMandante']);
   $sel=$con->query("SELECT rut FROM mandante WHERE rut='$rutCompleto'");
   $row = mysqli_num_rows($sel);
   if ($row == 0) {

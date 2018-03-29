@@ -8,6 +8,7 @@ $fecha_depre = new DateTime($d_prod["fecha_dep"]);
 $newDepre = $fecha_depre->format('d-m-Y');
 $obs = $d_prod["observacion"];
 $tipo = $d_prod["tipo"];
+$estado = $d_prod["estado"];
 $tipos_prod = $conexion->query("SELECT * FROM tipo_producto WHERE id='$tipo'");
 if ($tipos = $tipos_prod->fetch_assoc()) {}
 
@@ -41,6 +42,20 @@ echo '
   </select>
 </div>
 </div>
+  <div class="form-group">
+    <label >Estado</label>
+    <select class="form-control" style="width: 100%;" required name="estado">
+    ';
+    if ($estado == 0) {
+      echo '<option value="0" selected>Activo</option>';
+      echo '<option value="1">Desactivado</option>';
+    }else {
+      echo '<option value="0">Activo</option>';
+      echo '<option value="1" selected>Desactivado</option>';
+    }
+    echo '
+    </select>
+  </div>
 <div class="box-footer">
 <button type="submit" class="btn btn-primary">Enviar</button>
 </div>

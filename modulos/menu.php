@@ -35,6 +35,7 @@
         </li>
       <?php } ?>
       <li class=""><a href="personalvigente.php" ><i class="fa fa-home"></i> <span>Personal Vigente</span></a></li>
+      <li class=""><a href="organigrama.php" target="_blank"><i class="fa fa-users"></i> <span>Organigrama</span></a></li>
     </ul>
   </section>
 </aside>

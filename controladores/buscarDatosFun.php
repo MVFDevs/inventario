@@ -20,6 +20,10 @@ if ($d_tipo = $sel_tipo->fetch_assoc()) {}
 $idObra = $d_fun["id_obra"];
 $sel_obra = $conexion->query("SELECT id,nombre FROM obra WHERE id='$idObra'");
 if ($d_obra = $sel_obra->fetch_assoc()) {}
+// Buscar Nombre Supervisor
+$rutSupervisor = $d_fun["rut_supervisor"];
+$selSup = $conexion->query("SELECT rut,nombre FROM supervisor WHERE rut='$rutSupervisor'");
+if ($d_sup = $selSup->fetch_assoc()) {}
 
 echo '
 <div class="col-md-12">
@@ -134,9 +138,28 @@ echo '
 </div>
 </div>
 </div>
-<div class="box-footer">
-  <button type="submit" class="btn btn-primary">Enviar</button>
+<div class="col-md-12">
+  <div class="form-group">
+    <label >Supervisor</label>
+    <select class="form-control select2" style="width: 100%;" required name="supervisor">';
+      echo '
+      <option value="'.$d_sup["rut"].' ">'.$d_sup["nombre"].'</option>
+      ';
+      $sel_sup = $conexion->query("SELECT rut,nombre FROM supervisor");
+      while ($sup = $sel_sup->fetch_assoc()) {
+        echo '
+            <option value="'.$sup["rut"].' ">'.$sup["nombre"].'</option>
+        ';
+      }
+    echo '
+    </select>
+  </div>
 </div>
+  ';
+  echo '
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
   ';
  ?>
  <script type="text/javascript">

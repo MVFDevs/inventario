@@ -5,6 +5,7 @@ if(isset($_POST["user"]))
   if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["user"] )&&
   preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"]))
   {
+    $pass_re = $_POST["password"];
     $user=$_POST["user"];
     $pass=decrypt($_POST["password"]);
     $sel=$con->query("SELECT id,tipo,nombre,pass,rut FROM usuario WHERE nombre='$user' AND pass='$pass' AND estado='0'");
@@ -20,6 +21,8 @@ if(isset($_POST["user"]))
         $_SESSION["usuario"] = $valor["nombre"];
         $_SESSION["rut"] = $valor["rut"];
       }
+
+      $_SESSION["pass"] = $pass_re;
       $rut = $_SESSION["rut"];
       $sel=$con->query("SELECT funcionario.nombre,funcionario.apellido,cargo.descripcion FROM usuario INNER JOIN funcionario ON funcionario.rut = usuario.rut INNER JOIN cargo ON cargo.id = funcionario.cargo WHERE usuario.rut ='$rut'");
       $row = mysqli_num_rows($sel);

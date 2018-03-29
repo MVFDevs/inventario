@@ -1,5 +1,6 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> -->
 <script src="js/select2.full.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
@@ -20,3 +21,4 @@
 <script src="js/bootstrap-datepicker.min.js"></script>
 <script src="js/jquery.rut.min.js"></script>
 <script src="js/funciones.js"></script>
+<script src="js/jquery.jOrgChart.js"></script>

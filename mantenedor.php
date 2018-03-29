@@ -28,6 +28,58 @@
             </div>
             <div class="box-body">
               <!-- ========================================== -->
+              <!-- Formulario Usuario -->
+              <!-- ========================================== -->
+
+              <div class="box box-danger collapsed-box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Usuarios</h3>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <form role="form" method="post" action="controladores/insUsuario.php">
+                    <div class="box-body">
+                      <div class="form-group">
+                        <label for="Nombre">Tipo de usuario</label>
+                        <select class="form-control select2" style="width: 100%;" required name="tipoUs" id="tipoUsu">
+                          <?php
+                            $datos = $con->query("SELECT * FROM tipo_funcionario");
+                            echo '<option value="" disbaled>Seleccione Tipo de usuario</option>';
+                            while($row = $datos->fetch_assoc()){
+                              echo '<option value="'.$row["id"].'">'.$row["descripcion"].'</option>'."\n";
+                            }
+                            ?>
+                        </select>
+                        <div class="form-group">
+                          <label for="Nombre">Nombre de usuario</label>
+                          <input type="text" class="form-control" id="NombreUs" placeholder="Ingrese nombre de usuario" required name="NombreUs" value="">
+                        </div>
+                        <div class="form-group">
+                          <label for="Nombre">Contraseña de usuario</label>
+                          <input type="password" class="form-control" id="ContraUs" placeholder="Ingrese contraseña de usuario" required name="ContraUs" value="">
+                        </div>
+                        <label for="Nombre">Funcionario</label>
+                        <select class="form-control select2" style="width: 100%;" required name="FunEn" id="tipoUs">
+                          <?php
+                            $datos = $con->query("SELECT rut,nombre,apellido FROM funcionario WHERE not estado=1");
+                            echo '<option value="" disbaled>Seleccione Funcionario</option>';
+                            while($row = $datos->fetch_assoc()){
+                              echo '<option value="'.$row["rut"].'">'.$row["nombre"]." ".$row["apellido"].'</option>'."\n";
+                            }
+                            ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="box-footer">
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- ========================================== -->
               <!-- Formulario Holding -->
               <!-- ========================================== -->
 
@@ -44,7 +96,7 @@
                     <div class="box-body">
                       <div class="form-group">
                         <label for="Nombre">Nombre de Holding</label>
-                        <input type="text" class="form-control" id="Nombre" placeholder="Ingrese nombre de holding" required name="descripcion" value="">
+                        <input type="text" class="form-control" id="NombreHold" placeholder="Ingrese nombre de holding" required name="descripcion" value="">
                       </div>
                     </div>
                     <div class="box-footer">
@@ -71,13 +123,13 @@
                         <div class="col-md-6 col-xs-8">
                           <div class="form-group">
                             <label for="rut">Rut</label>
-                            <input type="text" class="form-control" id="rut" placeholder="Ingrese rut del funcionario" required pattern="[0-9]{8,9}" title="Ingresa un rut valido" maxlength="9" name="rut">
+                            <input type="text" class="form-control" id="rutMan" placeholder="Ingrese rut del mandante" required pattern="[0-9]{8,9}" title="Ingresa un rut valido" maxlength="9" name="rut">
                           </div>
                         </div>
                         <div class="col-md-1 col-xs-4">
                           <div class="form-group">
                             <label for="digito" > </label>
-                            <input type="text" required pattern="[0-9kK]{1}" title="Ingrese un valor correcto" id="digito" class="form-control" name="digito" maxlength="1">
+                            <input type="text" required pattern="[0-9kK]{1}" title="Ingrese un valor correcto" id="digitoMan" class="form-control" name="digito" maxlength="1">
                           </div>
                         </div>
                       </div>
@@ -94,7 +146,7 @@
                           <div class="form-group">
                             <label>Holding</label>
                             <select class="form-control select2" style="width: 100%;" required name="holdingMandante" id="holdingMandante">
-                              <option value="0">Seleccione Holding</option>
+                              <option value="">Seleccione Holding</option>
                             </select>
                           </div>
                         </div>
@@ -134,7 +186,7 @@
                       </div>
                       <div class="form-group">
                         <label for="nombre">Nombre de Obra</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre de obra" required name="nombreObra">
+                        <input type="text" class="form-control" id="nombreObr" placeholder="Ingrese nombre de obra" required name="nombreObra">
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
@@ -183,7 +235,7 @@
                         <div class="col-md-6 col-xs-8">
                           <div class="form-group">
                             <label for="rut">Rut</label>
-                            <input type="text" class="form-control" id="rut" placeholder="Ingrese rut del funcionario" required pattern="[0-9]{7,8}" title="Ingresa un rut valido" maxlength="8" name="rut">
+                            <input type="text" class="form-control" id="rutFun" placeholder="Ingrese rut del funcionario" required pattern="[0-9]{7,8}" title="Ingresa un rut valido" maxlength="8" name="rut">
                           </div>
                         </div>
                         <div class="col-md-1 col-xs-4">
@@ -197,7 +249,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre" required name="nombre">
+                            <input type="text" class="form-control" id="nombreFun" placeholder="Nombre" required name="nombre">
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -252,6 +304,19 @@
                               <input type="text" class="form-control pull-right" id="nombramiento" required name="nombramiento">
                             </div>
                           </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Supervisor</label>
+                          <select class="form-control select2" style="width: 100%;" required name="supervisor">
+                            <?php
+                              $datos = mysqli_query($con,"SELECT * FROM supervisor");
+                              foreach ($datos as $item) {
+                             ?>
+                            <option value="<?php echo $item['rut'] ?>"><?php echo $item['nombre'] ?></option>
+                          <?php } ?>
+                          </select>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -340,6 +405,30 @@
               </div>
             </div>
             <div class="box-body">
+              <!-- ========================================== -->
+              <!-- Formulario Modificación Usuario -->
+              <!-- ========================================== -->
+              <div class="box box-danger collapsed-box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Usuario</h3>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <form role="form" action="controladores/actualizarDatos.php" method="post">
+                    <select class="form-control select2" style="width: 100%;" name="UsuMod" id="UsuMod" required  >
+                      <option value="">Seleccione Usuario</option>
+                    </select>
+                    <div class="form-group">
+                      <input type="text" class="form-control pull-right" name="tipo_mod" value="usuario" style="visibility:hidden">
+                    </div>
+                    <div id="formularioUSuario">
+                    </div>
+                  </form>
+              </div>
+            </div>
               <!-- ========================================== -->
               <!-- Formulario Modificación Obra -->
               <!-- ========================================== -->

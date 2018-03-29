@@ -14,8 +14,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
        header('location:../extend/alerta.php?msj=Holding no pudo ser registrado&c=salir&p=man&t=error');
     }
     $ins->close();
-    $con->close();
-    $comprobacion->close();
+    $con->close();    
   }else {
     header('location:../extend/alerta.php?msj=Holding ya se encuentra creado&c=salir&p=man&t=error');
   }

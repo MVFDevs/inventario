@@ -28,6 +28,7 @@ $(function(){
 	$.post( 'controladores/buscarFuncionario.php' ).done( function(respuesta)
 	{
 		$( '#funcionario' ).html( respuesta );
+
 	});
 	$('#funcionario').change(function()
 	{
@@ -86,6 +87,23 @@ $(
         {
           $( '#formularioProducto' ).html( respuesta );
         });
+      }
+    );
+  }
+);
+$(
+  function() {
+    $.post('controladores/buscarUsuariosMod.php').done(function(respuesta) {
+        $('#UsuMod').html(respuesta);
+      });
+      $('#UsuMod').on('change',
+      function() {
+        var id = $(this).val();
+        $.post('controladores/buscarDatosUsu.php',{codigo:id}).done(
+          function(respuesta) {
+            $('#formularioUSuario').html(respuesta);
+          }
+        );
       }
     );
   }

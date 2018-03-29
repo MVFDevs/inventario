@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
   $nombramiento = htmlentities($_POST['nombramiento']);
   $nombramiento = strtotime($nombramiento);
   $fNombramiento = date('Y-m-d',$nombramiento);
+  $supervisor = htmlentities($_POST["supervisor"]);
   $obra = htmlentities($_POST['obra']);
   $sel=$con->query("SELECT rut FROM funcionario WHERE rut='$rutCompleto'");
   $row = mysqli_num_rows($sel);
   if ($row == 0) {
-    $sql = "INSERT INTO funcionario(rut,nombre,apellido,cargo,tipo,correo,estado,fecha_nombramiento,id_obra) VALUES ('$rutCompleto','$nombre','$apellido','$cargo','$tipoFuncionario','$correo','$estado','$fNombramiento','$obra')";
-
+    $sql = "INSERT INTO funcionario(rut,nombre,apellido,cargo,tipo,correo,estado,fecha_nombramiento,id_obra,rut_supervisor) VALUES ('$rutCompleto','$nombre','$apellido','$cargo','$tipoFuncionario','$correo','$estado','$fNombramiento','$obra','$supervisor')";
     $ins = mysqli_query($con,$sql);
     if ($ins) {
     header('location:../extend/alerta.php?msj=Funcionario Creado&c=salir&p=man&t=success');
